@@ -44,14 +44,14 @@
 
             <!-- contacts -->
             <div id="contacts">
-                <div class="contact-card">
+                <div v-for="contact in contacts" class="contact-card">
                     <div class="img-wrapper">
-                        <img src="./img/avatar_1.jpg" alt="">
+                        <img :src="contact.avatar" alt="">
                     </div>
 
                     <div class="contact-info">
                         <div class="info-top">
-                            <strong>Name</strong>
+                            <strong>{{contact.name}}</strong>
                             <small>12:00</small>
                         </div>
                         <div>Last message</div>

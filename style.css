@@ -10,12 +10,18 @@ body{
     height: 100%;
 
     font-family: sans-serif;
+
+    background-color: #DBDBD3;
+}
+
+button{
+    border: none;
 }
 
 /* main container layout */
 .container{
-    background-color: pink;
-    border: 1px dashed red;
+    /* background-color: pink;
+    border: 1px dashed red; */
     /* test */
 
     max-width: 1600px;
@@ -26,7 +32,7 @@ body{
 }
 
 .container *{
-    border: 1px dashed red;
+    /* border: 1px dashed red; */
     /* test */
 }
 
@@ -74,15 +80,21 @@ header{
 }
 
 /* sidebar */
+aside{
+    background-color: white;
+}
+
 #banner{
     padding: 15px 20px;
     background-color: #8EDAFC;
 }
 
-/* searchbar */
+/* contact searchbar */
 #searchbar{
     width: 100%;
     padding: 10px;
+    border-bottom: 1px solid lightgray;
+
 
     display: flex;
 }
@@ -97,6 +109,7 @@ header{
 #searchbar button{
     width: 70px;
     background-color: white;
+    border: none;
 }
 
 /* contact list */
@@ -110,7 +123,9 @@ header{
 }
 
 .contact-card{
-    background-color: white;
+    /* background-color: white; */
+    /* border-top: 1px solid lightgray; */
+    border-bottom: 1px solid lightgray;
     /* test */
 
     height: 80px;
@@ -205,4 +220,6 @@ footer input{
     flex-grow: 1;
 
     border-radius: 8px;
+
+    border: none;
 }
