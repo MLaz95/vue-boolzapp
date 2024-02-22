@@ -42,8 +42,7 @@ body{
     flex-grow: 1;
 }
 
-/* sidebar */
-aside header{
+header{
     width: 100%;
     padding: 10px;
     display: flex;
@@ -71,8 +70,10 @@ aside header{
 .head-buttons{
     width: 50%;
     /* test */
+    text-align: right;
 }
 
+/* sidebar */
 #banner{
     padding: 15px 20px;
     background-color: #8EDAFC;
@@ -105,13 +106,13 @@ aside header{
     display: flex;
     flex-direction: column;
 
-    overflow-y: scroll;
+    overflow-y: auto;
 }
 
 .contact-card{
     background-color: white;
     /* test */
-    
+
     height: 80px;
     padding: 10px 20px;
 
@@ -139,4 +140,69 @@ aside header{
 .info-top{
     display: flex;
     justify-content: space-between;
+}
+
+/* chat screen */
+
+main{
+    display: flex;
+    flex-direction: column;
+}
+
+#chat-container{
+    flex-grow: 1;
+
+    display: flex;
+    flex-direction: column;
+
+    padding: 5% 10%;
+    background-image: url(./img/mine.jpg);
+
+    overflow-y: auto;
+}
+
+.chat-row{
+    display: flex;
+}
+
+.chat-row.sent{
+    justify-content: end;
+}
+
+.chat-row.received{
+    justify-content: start;
+}
+
+.chat-text{
+    padding: 1em;
+    border-radius: 10px;
+}
+
+.sent .chat-text{
+    background-color: #D5F9BA;
+}
+
+.received .chat-text{
+    background-color: white;
+}
+
+
+/* chat input */
+footer{
+    height: 74px;
+    padding: 10px;
+    display: flex;
+
+    background-color: #F3EEEA;
+}
+
+footer button{
+    width: 100px;
+    background-color: #F3EEEA;
+}
+
+footer input{
+    flex-grow: 1;
+
+    border-radius: 8px;
 }
