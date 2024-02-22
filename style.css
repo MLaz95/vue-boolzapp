@@ -123,16 +123,24 @@ header{
 }
 
 .contact-card{
-    /* background-color: white; */
-    /* border-top: 1px solid #E9EBEB; */
     border-bottom: 1px solid #E9EBEB;
-    /* test */
 
     height: 80px;
     padding: 10px 20px;
 
     display: flex;
     gap: 1em;
+
+    transition: background-color 0.1s;
+}
+
+.contact-card:hover{
+    cursor: pointer;
+    background-color: #E9EBEB;
+}
+
+.contact-card.active{
+    background-color: #E9EBEB;
 }
 
 .img-wrapper{

@@ -7,7 +7,7 @@
             {
                 name: 'Michele',
                 avatar: './img/avatar_1.jpg',
-                visible: true,
+                visible: false,
                 messages: [
                     {
                         date: '10/01/2020 15:30:55',
@@ -29,7 +29,7 @@
             {
                 name: 'Fabio',
                 avatar: './img/avatar_2.jpg',
-                visible: true,
+                visible: false,
                 messages: [
                     {
                         date: '20/03/2020 16:30:00',
@@ -51,7 +51,7 @@
             {
                 name: 'Samuele',
                 avatar: './img/avatar_3.jpg',
-                visible: true,
+                visible: false,
                 messages: [
                     {
                         date: '28/03/2020 10:10:40',
@@ -73,7 +73,7 @@
             {
                 name: 'Alessandro B.',
                 avatar: './img/avatar_4.jpg',
-                visible: true,
+                visible: false,
                 messages: [
                     {
                         date: '10/01/2020 15:30:55',
@@ -90,7 +90,7 @@
             {
                 name: 'Alessandro L.',
                 avatar: './img/avatar_5.jpg',
-                visible: true,
+                visible: false,
                 messages: [
                     {
                         date: '10/01/2020 15:30:55',
@@ -107,7 +107,7 @@
             {
                 name: 'Claudia',
                 avatar: './img/avatar_6.jpg',
-                visible: true,
+                visible: false,
                 messages: [
                     {
                         date: '10/01/2020 15:30:55',
@@ -129,7 +129,7 @@
             {
                 name: 'Federico',
                 avatar: './img/avatar_7.jpg',
-                visible: true,
+                visible: false,
                 messages: [
                     {
                         date: '10/01/2020 15:30:55',
@@ -146,7 +146,7 @@
             {
                 name: 'Davide',
                 avatar: './img/avatar_8.jpg',
-                visible: true,
+                visible: false,
                 messages: [
                     {
                         date: '10/01/2020 15:30:55',
@@ -167,7 +167,8 @@
             }   
         ],
 
-        activeMessages:[]
+        activeMessages:[],
+        activeChatIndex: '0',
       }
     },
 
@@ -175,9 +176,12 @@
         
         getMessages(index){
             this.activeMessages = [];
-            this.activeMessages.push(...this.contacts[index].messages);
-            console.log(this.activeMessages)
+            this.contacts[this.activeChatIndex].visible = false;
 
+            this.activeChatIndex = index;
+
+            this.contacts[this.activeChatIndex].visible = true;
+            this.activeMessages.push(...this.contacts[index].messages);
         },
     },
 

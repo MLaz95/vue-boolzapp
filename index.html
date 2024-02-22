@@ -47,6 +47,7 @@
                 <div
                     v-for="(contact, index) in contacts"
                     @click="getMessages(index)"
+                    :class="{active: contact.visible}"
                     class="contact-card">
                     <div class="img-wrapper">
                         <img :src="contact.avatar" alt="">
@@ -68,11 +69,11 @@
             <header>
                 <div class="head-profile">
                     <div class="img-wrapper-small">
-                        <img src="./img/avatar_1.jpg" alt="">
+                        <img :src="contacts[activeChatIndex].avatar" alt="">
                     </div>
                     <div>
                         <div>
-                            <strong>Name</strong>
+                            <strong>{{contacts[activeChatIndex].name}}</strong>
                         </div>
                         <div>
                             <small>Last access</small>
