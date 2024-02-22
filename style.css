@@ -16,6 +16,9 @@ body{
 
 button{
     border: none;
+
+    font-size: 1.5em; 
+    cursor: pointer;
 }
 
 /* main container layout */
@@ -79,7 +82,17 @@ header{
 .head-buttons{
     width: 50%;
     /* test */
-    text-align: right;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    gap: 1.5em;
+
+    padding: 0 20px
+    
+}
+
+.head-buttons button{
+    color: #B1B1B1;
 }
 
 /* sidebar */
@@ -108,8 +121,12 @@ header{
 
 #searchbar button{
     width: 70px;
+
+    font-size: 1em;
+    color: #B1B1B1;
     background-color: white;
-    border: none;
+    border: 1px solid #E9EBEB;
+    border-right: 0;
 }
 
 /* contact list */
@@ -222,6 +239,7 @@ footer{
 
 footer button{
     width: 100px;
+    color: #6B7376;
     background-color: #F3EEEA;
 }
 
@@ -229,6 +247,5 @@ footer input{
     flex-grow: 1;
 
     border-radius: 8px;
-
     border: none;
 }
