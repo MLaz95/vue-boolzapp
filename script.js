@@ -165,7 +165,23 @@
                     }
                 ],
             }   
-        ]
+        ],
+
+        activeMessages:[]
       }
+    },
+
+    methods: {
+        
+        getMessages(index){
+            this.activeMessages = [];
+            this.activeMessages.push(...this.contacts[index].messages);
+            console.log(this.activeMessages)
+
+        },
+    },
+
+    mounted() {
+        this.getMessages(0);
     }
   }).mount('#app')

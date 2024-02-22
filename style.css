@@ -31,10 +31,10 @@ button{
     display: flex;
 }
 
-.container *{
-    /* border: 1px dashed red; */
-    /* test */
-}
+/* .container *{
+    border: 1px dashed red;
+    test
+} */
 
 .container aside{
     flex: 0 0 30%;
@@ -42,6 +42,9 @@ button{
 
     display: flex;
     flex-direction: column;
+
+    border-right: 1px solid #D6D5D5;
+    background-color: white;
 }
 
 .container main{
@@ -80,9 +83,6 @@ header{
 }
 
 /* sidebar */
-aside{
-    background-color: white;
-}
 
 #banner{
     padding: 15px 20px;
@@ -93,7 +93,7 @@ aside{
 #searchbar{
     width: 100%;
     padding: 10px;
-    border-bottom: 1px solid lightgray;
+    border-bottom: 1px solid #E9EBEB;
 
 
     display: flex;
@@ -102,7 +102,7 @@ aside{
 #searchbar input{
     height: 38px;
 
-    border: 1px solid lightgray;
+    border: 1px solid #E9EBEB;
     flex-grow: 1;
 }
 
@@ -124,8 +124,8 @@ aside{
 
 .contact-card{
     /* background-color: white; */
-    /* border-top: 1px solid lightgray; */
-    border-bottom: 1px solid lightgray;
+    /* border-top: 1px solid #E9EBEB; */
+    border-bottom: 1px solid #E9EBEB;
     /* test */
 
     height: 80px;
@@ -178,6 +178,7 @@ main{
 
 .chat-row{
     display: flex;
+    margin: 0.2em;
 }
 
 .chat-row.sent{

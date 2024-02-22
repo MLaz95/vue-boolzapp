@@ -16,7 +16,7 @@
                 <!-- user profile and buttons -->
                 <div class="head-profile">
                     <div class="img-wrapper-small">
-                        <img src="./img/avatar_1.jpg" alt="">
+                        <img src="./img/avatar_io.jpg" alt="">
                     </div>
                     <span>User</span>
                 </div>
@@ -44,7 +44,10 @@
 
             <!-- contacts -->
             <div id="contacts">
-                <div v-for="contact in contacts" class="contact-card">
+                <div
+                    v-for="(contact, index) in contacts"
+                    @click="getMessages(index)"
+                    class="contact-card">
                     <div class="img-wrapper">
                         <img :src="contact.avatar" alt="">
                     </div>
@@ -85,11 +88,12 @@
 
             <div id="chat-container">
                 <!-- chat -->
-                <div class="chat-row sent">
-                    <div class="chat-text">is anyone there?</div>
-                </div>
-                <div class="chat-row received">
-                    <div class="chat-text">Hello Dave</div>
+                <div
+                    v-for="text in activeMessages"
+                    class="chat-row"
+                    :class="text.status"
+                >
+                    <div class="chat-text">{{text.message}}</div>
                 </div>
             </div>
 
