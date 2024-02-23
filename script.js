@@ -169,6 +169,8 @@
         ],
 
         activeContact:{},
+        activeContactIndex:'',
+        responderContact:{},
         newMessage:{
             date: '',
             message: '',
@@ -193,6 +195,7 @@
         getMessages(index){
             this.activeMenu = null
             this.activeContact.visible = false;
+            this.activeContactIndex = index;
             this.activeContact = this.contacts[index];
             this.activeContact.visible = true;
         },
@@ -205,10 +208,11 @@
 
         getResponse(){
             this.newResponse.date = this.now();
-            this.activeContact.messages.push({...this.newResponse})
+            this.responderContact.messages.push({...this.newResponse})
         },
 
         delayResponse(){
+            this.responderContact = {...this.activeContact};
             setTimeout(this.getResponse, 1000)
         },
 
@@ -239,6 +243,6 @@
     mounted() {
         this.getMessages(0);
         
-        console.log()
+        console.log(this.activeContact)
     }
   }).mount('#app')
