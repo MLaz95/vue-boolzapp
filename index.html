@@ -108,7 +108,7 @@
                 >
                     <div class="chat-text">
                         {{text.message}}
-                        <span class="chat-time">{{text.date}}</span>
+                        <span class="chat-time">{{formatTime(text.date)}}</span>
                     </div>
                 </div>
             </div>
@@ -128,7 +128,8 @@
         </main>
     </div>
 
-
+    <!-- luxon -->
+    <script src="https://cdn.jsdelivr.net/npm/luxon@3.4.4/build/global/luxon.min.js"></script>
     <!-- vue -->
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <!-- my script -->

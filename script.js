@@ -1,4 +1,5 @@
-  const { createApp } = Vue
+  const { createApp } = Vue;
+  const {DateTime} = luxon;
 
   createApp({
     data() {
@@ -169,13 +170,13 @@
 
         activeContact:{},
         newMessage:{
-            date: 'now',
+            date: '',
             message: '',
             status: 'sent'
         },
 
         newResponse:{
-            date: 'now',
+            date: '',
             message: 'ok',
             status: 'received'
         },
@@ -193,11 +194,13 @@
         },
 
         sendMessage(){
+            this.newMessage.date = this.now();
             this.activeContact.messages.push({...this.newMessage});
             this.newMessage.message = '';
         },
 
         getResponse(){
+            this.newResponse.date = this.now();
             this.activeContact.messages.push({...this.newResponse})
         },
 
@@ -209,9 +212,22 @@
             return this.contacts.filter(contact => contact.name.toLowerCase().includes(this.search.toLowerCase()))
         },
 
+        now(){
+            return DateTime.now().toFormat('dd/LL/yyyy HH:mm:ss');
+        },
+
+        formatTime(date){
+            const dt = DateTime.fromFormat(date, 'dd/LL/yyyy HH:mm:ss')
+            return dt.toLocaleString(DateTime.TIME_24_SIMPLE)
+        }
+
+        
+
     },
 
     mounted() {
         this.getMessages(0);
+        
+        console.log(this.formatTime(this.contacts[0].messages[0].date))
     }
   }).mount('#app')
