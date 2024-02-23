@@ -116,7 +116,12 @@
             <footer>
                 <!-- input area -->
                 <button><i class="fa-regular fa-face-smile"></i></button>
-                <input type="text">
+                <input
+                    type="text"
+                    placeholder="Type a message"
+                    v-model="newMessage.message"
+                    @keyup.enter="sendMessage()"
+                >
                 <button><i class="fa-solid fa-microphone"></i></button>
             </footer>           
 

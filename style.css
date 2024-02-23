@@ -242,6 +242,8 @@ main{
     max-width: 65%;
 
     position: relative;
+
+    word-break: break-word;
 }
 
 .sent .chat-text{
@@ -281,4 +283,12 @@ footer input{
 
     border-radius: 8px;
     border: none;
+
+    padding: 1em;
+
+    font-size: 1em;
+}
+
+footer input:focus-visible{
+    outline: none;
 }

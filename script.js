@@ -168,6 +168,11 @@
         ],
 
         activeContact:{},
+        newMessage:{
+            date: 'now',
+            message: '',
+            status: 'sent'
+        },
       }
     },
 
@@ -178,6 +183,11 @@
             this.activeContact = this.contacts[index];
             this.activeContact.visible = true;
         },
+
+        sendMessage(){
+            this.activeContact.messages.push({...this.newMessage});
+            this.newMessage.message = '';
+        }
     },
 
     mounted() {
