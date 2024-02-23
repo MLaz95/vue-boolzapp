@@ -182,12 +182,16 @@
         },
 
         search: '',
+        activeMenu: null,
+
+        
       }
     },
 
     methods: {
         
         getMessages(index){
+            this.activeMenu = null
             this.activeContact.visible = false;
             this.activeContact = this.contacts[index];
             this.activeContact.visible = true;
@@ -219,9 +223,16 @@
         formatTime(date){
             const dt = DateTime.fromFormat(date, 'dd/LL/yyyy HH:mm:ss')
             return dt.toLocaleString(DateTime.TIME_24_SIMPLE)
-        }
+        },
 
-        
+        showMenu(index){
+            if(this.activeMenu != index){
+                this.activeMenu = index;
+            }else{
+                this.activeMenu = null;
+            }
+            
+        },
 
     },
 

@@ -253,6 +253,7 @@ main{
 
 .chat-text{
     padding: 1em;
+    padding-right: 1.5em;
     border-radius: 10px;
 
     min-width: 10%;
@@ -279,6 +280,49 @@ main{
     color: #6B7376;
 }
 
+.chat-text i{
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateX(25%);
+    transition: transform 0.3s;
+
+    color: gray;
+    /* text-shadow: 0 0 10px black; */
+}
+
+.chat-text:hover i{
+    opacity: 1;
+    pointer-events: all;
+    transform: translateX(0%);
+}
+
+.chat-drop{
+    position: absolute;
+    right: 5px;
+    top: 21px;
+
+    padding: 5px 0;
+    border-radius: 2px;
+    list-style: none;
+    white-space: nowrap;
+    background-color: white;
+    font-size: 1em;
+    box-shadow: 1px 1px 5px gray;
+    z-index: 10;
+}
+
+.chat-drop li{
+    cursor: pointer;
+    padding: 10px;
+    transition: background-color 0.2s;
+}
+
+.chat-drop li:hover{
+    background-color: lightgray;
+}
 
 /* chat input */
 footer{
