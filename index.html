@@ -64,11 +64,11 @@
                     </div>
 
                     <div class="contact-info">
-                        <div class="info-top">
-                            <strong>{{contact.name}}</strong>
-                            <small>{{formatTime(contact.messages[contact.messages.length - 1].date)}}</small>
-                        </div>
-                        <div>{{contact.messages[contact.messages.length - 1].message}}</div>
+                        
+                        <strong>{{contact.name}}</strong>
+                        <small>{{formatTime(contact.messages[contact.messages.length - 1].date)}}</small>
+                        
+                        <p>{{contact.messages[contact.messages.length - 1].message}}</p>
                     </div>
                 </div>
             </div>
@@ -106,10 +106,10 @@
                     class="chat-row"
                     :class="text.status"
                 >
-                    <div class="chat-text">
+                    <p class="chat-text">
                         {{text.message}}
                         <span class="chat-time">{{formatTime(text.date)}}</span>
-                    </div>
+                    </p>
                 </div>
             </div>
 

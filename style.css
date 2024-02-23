@@ -45,7 +45,6 @@ input:focus-visible{
 
 .container aside{
     flex: 0 0 30%;
-    max-width: 30%;
 
     display: flex;
     flex-direction: column;
@@ -174,6 +173,10 @@ header{
     gap: 1em;
 
     transition: background-color 0.1s;
+    position: relative;
+
+    /* overflow: hidden; */
+
 }
 
 .contact-card:hover{
@@ -188,6 +191,7 @@ header{
 .img-wrapper{
     width: 60px;
     height: 60px;
+    flex-shrink: 0;
 }
 
 .img-wrapper img{
@@ -202,9 +206,17 @@ header{
     flex-direction: column;
 }
 
-.info-top{
-    display: flex;
-    justify-content: space-between;
+.contact-info p{
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    max-width: 350px;
+}
+
+.contact-info small{
+    position: absolute;
+    top: 7px;
+    right: 7px;
 }
 
 /* chat screen */
