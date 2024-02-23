@@ -173,6 +173,12 @@
             message: '',
             status: 'sent'
         },
+
+        newResponse:{
+            date: 'now',
+            message: 'ok',
+            status: 'received'
+        }
       }
     },
 
@@ -187,6 +193,14 @@
         sendMessage(){
             this.activeContact.messages.push({...this.newMessage});
             this.newMessage.message = '';
+        },
+
+        getResponse(){
+            this.activeContact.messages.push({...this.newResponse})
+        },
+
+        delayResponse(){
+            setTimeout(this.getResponse, 1000)
         }
     },
 

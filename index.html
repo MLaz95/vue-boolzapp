@@ -120,7 +120,7 @@
                     type="text"
                     placeholder="Type a message"
                     v-model="newMessage.message"
-                    @keyup.enter="sendMessage()"
+                    @keyup.enter="sendMessage(), delayResponse()"
                 >
                 <button><i class="fa-solid fa-microphone"></i></button>
             </footer>           
