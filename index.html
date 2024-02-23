@@ -106,7 +106,10 @@
                     class="chat-row"
                     :class="text.status"
                 >
-                    <div class="chat-text">{{text.message}}</div>
+                    <div class="chat-text">
+                        {{text.message}}
+                        <span class="chat-time">{{text.date}}</span>
+                    </div>
                 </div>
             </div>
 

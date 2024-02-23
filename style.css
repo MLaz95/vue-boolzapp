@@ -237,6 +237,11 @@ main{
 .chat-text{
     padding: 1em;
     border-radius: 10px;
+
+    min-width: 10%;
+    max-width: 65%;
+
+    position: relative;
 }
 
 .sent .chat-text{
@@ -245,6 +250,14 @@ main{
 
 .received .chat-text{
     background-color: white;
+}
+
+.chat-time{
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+    font-size: 0.6em;
+    color: #6B7376;
 }
 
 
