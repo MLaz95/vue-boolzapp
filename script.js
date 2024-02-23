@@ -228,6 +228,6 @@
     mounted() {
         this.getMessages(0);
         
-        console.log(this.formatTime(this.contacts[0].messages[0].date))
+        console.log()
     }
   }).mount('#app')
