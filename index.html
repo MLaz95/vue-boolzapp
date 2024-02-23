@@ -79,11 +79,11 @@
             <header>
                 <div class="head-profile">
                     <div class="img-wrapper-small">
-                        <img :src="contacts[activeChatIndex].avatar" alt="">
+                        <img :src="activeContact.avatar" alt="">
                     </div>
                     <div>
                         <div>
-                            <strong>{{contacts[activeChatIndex].name}}</strong>
+                            <strong>{{activeContact.name}}</strong>
                         </div>
                         <div>
                             <small>Last access</small>
@@ -102,7 +102,7 @@
             <div id="chat-container">
                 <!-- chat -->
                 <div
-                    v-for="text in activeMessages"
+                    v-for="text in activeContact.messages"
                     class="chat-row"
                     :class="text.status"
                 >

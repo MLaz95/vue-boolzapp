@@ -167,21 +167,16 @@
             }   
         ],
 
-        activeMessages:[],
-        activeChatIndex: '0',
+        activeContact:{},
       }
     },
 
     methods: {
         
         getMessages(index){
-            this.activeMessages = [];
-            this.contacts[this.activeChatIndex].visible = false;
-
-            this.activeChatIndex = index;
-
-            this.contacts[this.activeChatIndex].visible = true;
-            this.activeMessages.push(...this.contacts[index].messages);
+            this.activeContact.visible = false;
+            this.activeContact = this.contacts[index];
+            this.activeContact.visible = true;
         },
     },
 
