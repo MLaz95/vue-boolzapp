@@ -178,7 +178,9 @@
             date: 'now',
             message: 'ok',
             status: 'received'
-        }
+        },
+
+        search: '',
       }
     },
 
@@ -201,7 +203,12 @@
 
         delayResponse(){
             setTimeout(this.getResponse, 1000)
-        }
+        },
+
+        filterContacts(){
+            return this.contacts.filter(contact => contact.name.toLowerCase().includes(this.search.toLowerCase()))
+        },
+
     },
 
     mounted() {

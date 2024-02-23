@@ -48,14 +48,14 @@
             </div>
 
             <div id="searchbar">
-                <button><i class="fa-solid fa-magnifying-glass"></i></button>
-                <input type="text">
+                <button @click="filterContacts"><i class="fa-solid fa-magnifying-glass"></i></button>
+                <input type="search" v-model="search" placeholder="Search or start new chat">
             </div>
 
             <!-- contacts -->
             <div id="contacts">
                 <div
-                    v-for="(contact, index) in contacts"
+                    v-for="(contact, index) in filterContacts()"
                     @click="getMessages(index)"
                     :class="{active: contact.visible}"
                     class="contact-card">

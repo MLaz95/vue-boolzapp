@@ -21,7 +21,11 @@ button{
     cursor: pointer;
 }
 
-/* main container layout */
+input:focus-visible{
+    outline: none;
+}
+
+/* general container layout */
 .container{
     /* background-color: pink;
     border: 1px dashed red; */
@@ -134,9 +138,10 @@ header{
 
 #searchbar input{
     height: 38px;
-
-    border: 1px solid #E9EBEB;
     flex-grow: 1;
+
+    border: 1px solid #E9EBEB;    
+    padding: 1em;
 }
 
 #searchbar button{
@@ -287,8 +292,4 @@ footer input{
     padding: 1em;
 
     font-size: 1em;
-}
-
-footer input:focus-visible{
-    outline: none;
 }
