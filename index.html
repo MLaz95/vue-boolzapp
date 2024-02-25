@@ -66,9 +66,11 @@
                     <div class="contact-info">
                         
                         <strong>{{contact.name}}</strong>
-                        <small>{{formatTime(contact.messages[contact.messages.length - 1].date)}}</small>
+
+                        <!-- v-if makes sure the app doesn't break if all messages are deleted from a chat -->
+                        <small v-if="contact.messages.length > 0">{{formatTime(contact.messages[contact.messages.length - 1].date)}}</small>
                         
-                        <p>{{contact.messages[contact.messages.length - 1].message}}</p>
+                        <p v-if="contact.messages.length > 0">{{contact.messages[contact.messages.length - 1].message}}</p>
                     </div>
                 </div>
             </div>
@@ -111,7 +113,7 @@
                         <span class="chat-time">{{formatTime(text.date)}}</span>
                         <i @click="showMenu(index)" class="fa-solid fa-chevron-down"></i>
                         <ul class="chat-drop" v-show="activeMenu == index">
-                            <li>Delete Message</li>
+                            <li @click="deleteMessage(index)">Delete Message</li>
                         </ul>
                     </div>
                 </div>

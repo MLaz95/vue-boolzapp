@@ -238,6 +238,11 @@
             
         },
 
+        deleteMessage(index){
+            this.activeContact.messages.splice(index, 1);
+            console.log(this.activeContact)
+        }
+
     },
 
     mounted() {
