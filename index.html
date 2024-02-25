@@ -12,127 +12,130 @@
     <link rel="stylesheet" href="./style.css">
 </head>
 <body>
-    
-    <div id="app" class="container">
-        <!-- sidebar with contacts -->
-        <aside>
-            <header>
-                <!-- user profile and buttons -->
-                <div class="head-profile">
-                    <div class="img-wrapper-small">
-                        <img src="./img/avatar_io.jpg" alt="">
-                    </div>
-                    <span>User</span>
-                </div>
-                
-                <div class="head-buttons">
-                    <button><i class="fa-solid fa-circle-notch"></i></button>
-                    <button><i class="fa-solid fa-message"></i></button>
-                    <button><i class="fa-solid fa-ellipsis-vertical"></i></button>
-                </div>
-            </header>
-
-            <!-- notification banner -->
-            <div id="banner">
-                <div class="head-profile">
-                    <div class="img-wrapper-small">
-                        <i class="fa-solid fa-bell-slash"></i>
-                    </div>
-                    <div>
-                        <div>Ricevi notifiche nuovi messaggi</div>
-                        <div><small><a href="#">Attiva notifiche desktop</a></small></div>
+    <div id="app">
+        <div class="back-top"></div>
+        <div class="container">
+            <!-- sidebar with contacts -->
+            <aside>
+                <header>
+                    <!-- user profile and buttons -->
+                    <div class="head-profile">
+                        <div class="img-wrapper-small">
+                            <img src="./img/avatar_io.jpg" alt="">
+                        </div>
+                        <span>User</span>
                     </div>
                     
-                </div>
-
-            </div>
-
-            <div id="searchbar">
-                <button @click="filterContacts"><i class="fa-solid fa-magnifying-glass"></i></button>
-                <input type="search" v-model="search" placeholder="Search or start new chat">
-            </div>
-
-            <!-- contacts -->
-            <div id="contacts">
-                <div
-                    v-for="(contact, index) in filterContacts()"
-                    @click="getMessages(index)"
-                    :class="{active: contact.visible}"
-                    class="contact-card">
-                    <div class="img-wrapper">
-                        <img :src="contact.avatar" alt="">
+                    <div class="head-buttons">
+                        <button><i class="fa-solid fa-circle-notch"></i></button>
+                        <button><i class="fa-solid fa-message"></i></button>
+                        <button><i class="fa-solid fa-ellipsis-vertical"></i></button>
                     </div>
+                </header>
 
-                    <div class="contact-info">
-                        
-                        <strong>{{contact.name}}</strong>
-
-                        <!-- v-if makes sure the app doesn't break if all messages are deleted from a chat -->
-                        <small v-if="contact.messages.length > 0">{{formatTime(contact.messages[contact.messages.length - 1].date)}}</small>
-                        
-                        <p v-if="contact.messages.length > 0">{{contact.messages[contact.messages.length - 1].message}}</p>
-                    </div>
-                </div>
-            </div>
-        </aside>
-
-        <!-- main view with texts -->
-        <main>
-            <header>
-                <div class="head-profile">
-                    <div class="img-wrapper-small">
-                        <img :src="activeContact.avatar" alt="">
-                    </div>
-                    <div>
-                        <div>
-                            <strong>{{activeContact.name}}</strong>
+                <!-- notification banner -->
+                <div id="banner">
+                    <div class="head-profile">
+                        <div class="img-wrapper-small">
+                            <i class="fa-solid fa-bell-slash"></i>
                         </div>
                         <div>
-                            <small>Last access</small>
+                            <div>Ricevi notifiche nuovi messaggi</div>
+                            <div><small><a href="#">Attiva notifiche desktop</a></small></div>
                         </div>
+                        
+                    </div>
+
+                </div>
+
+                <div id="searchbar">
+                    <button @click="filterContacts"><i class="fa-solid fa-magnifying-glass"></i></button>
+                    <input type="search" v-model="search" placeholder="Search or start new chat">
+                </div>
+
+                <!-- contacts -->
+                <div id="contacts">
+                    <div
+                        v-for="(contact, index) in filterContacts()"
+                        @click="getMessages(index)"
+                        :class="{active: contact.visible}"
+                        class="contact-card">
+                        <div class="img-wrapper">
+                            <img :src="contact.avatar" alt="">
+                        </div>
+
+                        <div class="contact-info">
+                            
+                            <strong>{{contact.name}}</strong>
+
+                            <!-- v-if makes sure the app doesn't break if all messages are deleted from a chat -->
+                            <small v-if="contact.messages.length > 0">{{formatTime(contact.messages[contact.messages.length - 1].date)}}</small>
+                            
+                            <p v-if="contact.messages.length > 0">{{contact.messages[contact.messages.length - 1].message}}</p>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- main view with texts -->
+            <main>
+                <header>
+                    <div class="head-profile">
+                        <div class="img-wrapper-small">
+                            <img :src="activeContact.avatar" alt="">
+                        </div>
+                        <div>
+                            <div>
+                                <strong>{{activeContact.name}}</strong>
+                            </div>
+                            <div>
+                                <small>Last access</small>
+                            </div>
+                        </div>
+                        
                     </div>
                     
-                </div>
-                
-                <div class="head-buttons">
-                    <button><i class="fa-solid fa-magnifying-glass"></i></button>
-                    <button><i class="fa-solid fa-paperclip"></i></button>
-                    <button><i class="fa-solid fa-ellipsis-vertical"></i></button>
-                </div>
-            </header>
+                    <div class="head-buttons">
+                        <button><i class="fa-solid fa-magnifying-glass"></i></button>
+                        <button><i class="fa-solid fa-paperclip"></i></button>
+                        <button><i class="fa-solid fa-ellipsis-vertical"></i></button>
+                    </div>
+                </header>
 
-            <div id="chat-container">
-                <!-- chat -->
-                <div
-                    v-for="(text, index) in activeContact.messages"
-                    class="chat-row"
-                    :class="text.status"
-                >
-                    <div class="chat-text">
-                        <p>{{text.message}}</p>
-                        <span class="chat-time">{{formatTime(text.date)}}</span>
-                        <i @click="showMenu(index)" class="fa-solid fa-chevron-down"></i>
-                        <ul class="chat-drop" v-show="activeMenu == index">
-                            <li @click="deleteMessage(index)">Delete Message</li>
-                        </ul>
+                <div id="chat-container">
+                    <!-- chat -->
+                    <div
+                        v-for="(text, index) in activeContact.messages"
+                        class="chat-row"
+                        :class="text.status"
+                    >
+                        <div class="chat-text">
+                            <p>{{text.message}}</p>
+                            <span class="chat-time">{{formatTime(text.date)}}</span>
+                            <i @click="showMenu(index)" class="fa-solid fa-chevron-down"></i>
+                            <ul class="chat-drop" v-show="activeMenu == index">
+                                <li @click="deleteMessage(index)">Delete Message</li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <footer>
-                <!-- input area -->
-                <button><i class="fa-regular fa-face-smile"></i></button>
-                <input
-                    type="text"
-                    placeholder="Type a message"
-                    v-model="newMessage.message"
-                    @keyup.enter="sendMessage(), delayResponse()"
-                >
-                <button><i class="fa-solid fa-microphone"></i></button>
-            </footer>           
+                <footer>
+                    <!-- input area -->
+                    <button><i class="fa-regular fa-face-smile"></i></button>
+                    <input
+                        type="text"
+                        placeholder="Type a message"
+                        v-model="newMessage.message"
+                        @keyup.enter="sendMessage(), delayResponse()"
+                    >
+                    <button><i class="fa-solid fa-microphone"></i></button>
+                </footer>           
 
-        </main>
+            </main>
+        </div>
     </div>
+        
 
     <!-- luxon -->
     <script src="https://cdn.jsdelivr.net/npm/luxon@3.4.4/build/global/luxon.min.js"></script>
