@@ -202,7 +202,11 @@
 
         sendMessage(){
             this.newMessage.date = this.now();
-            this.activeContact.messages.push({...this.newMessage});
+            if(this.newMessage.message.trim() != ''){
+                this.activeContact.messages.push({...this.newMessage});
+
+                this.delayResponse();
+            }
             this.newMessage.message = '';
         },
 
