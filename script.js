@@ -238,7 +238,14 @@
         // sends reply message, sets the user status to online for 1s before resetting back to the time of the last message
         getResponse(){
             this.newResponse.date = this.now();
-            this.responderContact.messages.push({...this.newResponse})
+
+            // the reply is a random cat fact obtained with an api
+            axios.get('https://meowfacts.herokuapp.com/').then((result) => {
+                console.log(result.data.data);
+                this.newResponse.message = result.data.data[0];
+                this.responderContact.messages.push({...this.newResponse})
+            });
+
             this.contacts[this.responderIndex].userStatus = 'online'
             setTimeout(this.getStatus, 1000)
         },
@@ -289,9 +296,12 @@
             this.newContact.name = '';
             this.newContact.avatar = '';
         },
+
     },
 
-    mounted() {        
-        console.log(this.activeContact);
+    mounted(){
+        axios.get('https://meowfacts.herokuapp.com/').then((result) => {
+            console.log(result);
+        })
     }
   }).mount('#app')
