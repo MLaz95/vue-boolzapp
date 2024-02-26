@@ -215,6 +215,9 @@
             this.activeContact = this.contacts[index];
             this.activeContact.visible = true;
             this.activeContact.userStatus = `Last seen at ${this.formatTime(this.activeContact.messages[this.activeContact.messages.length - 1].date)}`
+            if(window.innerWidth <= 992){
+                this.mobileNav()
+            }
         },
 
         // only sends a messages if the text has content and then calls the function to get a reply
@@ -301,7 +304,15 @@
             const splashScreen = document.querySelector('#splash-screen');
             splashScreen.classList.add('vanish');
 
-        }
+        },
+
+        // handles switching from menu to chat when in mobile mode
+        mobileNav(){
+            const aside =  document.querySelector('aside')
+            const main =  document.querySelector('main')
+            aside.classList.toggle('d-none');
+            main.classList.toggle('d-block');
+        },
 
     },
 

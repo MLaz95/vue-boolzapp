@@ -59,6 +59,7 @@ input:focus-visible{
 
     border-right: 1px solid #D6D5D5;
     background-color: white;
+    transition: flex 0.3s;
 }
 
 .my_container main{
@@ -415,5 +416,21 @@ footer input{
 
     100%{
         transform: rotate(360deg);
+    }
+}
+
+/* media queries */
+@media screen and (max-width: 992px) {
+    .my_container{
+        height: 100vh;
+        margin: 0;
+    }
+
+    .my_container aside{
+        flex-basis: 100%;
+    }
+
+    .my_container main{
+        display: none;
     }
 }

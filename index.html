@@ -128,6 +128,10 @@
                 <div v-else class="main-screen-wrapper">
                     <header>
                         <div class="head-profile">
+                            <i
+                                class="fa-solid fa-arrow-left d-lg-none"
+                                @click="mobileNav"
+                            ></i>
                             <div class="img-wrapper-small">
                                 <img :src="activeContact.avatar" alt="">
                             </div>
