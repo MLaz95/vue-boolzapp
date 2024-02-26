@@ -193,7 +193,7 @@
     methods: {
         
         getMessages(index){
-            this.activeMenu = null
+            // this.activeMenu = null
             this.activeContact.visible = false;
             this.activeContactIndex = index;
             this.activeContact = this.contacts[index];
@@ -210,14 +210,16 @@
             this.newMessage.message = '';
         },
 
-        getResponse(){
-            this.newResponse.date = this.now();
-            this.responderContact.messages.push({...this.newResponse})
-        },
-
+        // the contact that is responding is immediately saved as an independent variable
+        // this way the reply is not dependent on the active contact 
         delayResponse(){
             this.responderContact = {...this.activeContact};
             setTimeout(this.getResponse, 1000)
+        },
+
+        getResponse(){
+            this.newResponse.date = this.now();
+            this.responderContact.messages.push({...this.newResponse})
         },
 
         filterContacts(){
@@ -231,15 +233,6 @@
         formatTime(date){
             const dt = DateTime.fromFormat(date, 'dd/LL/yyyy HH:mm:ss')
             return dt.toLocaleString(DateTime.TIME_24_SIMPLE)
-        },
-
-        showMenu(index){
-            if(this.activeMenu != index){
-                this.activeMenu = index;
-            }else{
-                this.activeMenu = null;
-            }
-            
         },
 
         deleteMessage(index){

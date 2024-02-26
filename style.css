@@ -41,7 +41,7 @@ input:focus-visible{
 }
 
 /* general container layout */
-.container{
+.my_container{
     /* background-color: pink;
     border: 1px dashed red; */
     /* test */
@@ -54,12 +54,12 @@ input:focus-visible{
     display: flex;
 }
 
-/* .container *{
+/* .my_container *{
     border: 1px dashed red;
     test
 } */
 
-.container aside{
+.my_container aside{
     flex: 0 0 30%;
 
     display: flex;
@@ -69,7 +69,7 @@ input:focus-visible{
     background-color: white;
 }
 
-.container main{
+.my_container main{
     flex-grow: 1;
 }
 
@@ -296,38 +296,24 @@ main{
     color: #6B7376;
 }
 
-.chat-text i{
+.chat-text .btn{
     position: absolute;
-    top: 5px;
-    right: 5px;
+    top: 0;
+    right: 0;
     opacity: 0;
     pointer-events: none;
     transform: translateX(25%);
     transition: transform 0.3s;
 
+    border: none;
     color: gray;
     /* text-shadow: 0 0 10px black; */
 }
 
-.chat-text:hover i{
+.chat-text:hover .btn, .chat-text:focus-within .btn{
     opacity: 1;
     pointer-events: all;
     transform: translateX(0%);
-}
-
-.chat-drop{
-    position: absolute;
-    right: 5px;
-    top: 21px;
-
-    padding: 5px 0;
-    border-radius: 2px;
-    list-style: none;
-    white-space: nowrap;
-    background-color: white;
-    font-size: 1em;
-    box-shadow: 1px 1px 5px gray;
-    z-index: 10;
 }
 
 .chat-drop li{
@@ -336,8 +322,8 @@ main{
     transition: background-color 0.2s;
 }
 
-.chat-drop li:hover{
-    background-color: lightgray;
+.chat-drop{
+    --bs-dropdown-link-hover-bg: lightgray;
 }
 
 /* chat input */
