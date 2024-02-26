@@ -176,6 +176,14 @@
             }   
         ],
 
+        newContact:{
+            name: '',
+            avatar: '',
+            visible: false,
+            userStatus: '',
+            messages: [],
+        },
+
         activeContact: {},
         activeContactIndex:'0',
         responderContact:{},
@@ -235,6 +243,10 @@
             setTimeout(this.getStatus, 1000)
         },
 
+        getStatus(){
+            this.contacts[this.responderIndex].userStatus = `Last seen at ${this.formatTime(this.now())}`;
+        },
+
         filterContacts(){
             return this.contacts.filter(contact => contact.name.toLowerCase().includes(this.search.toLowerCase()))
         },
@@ -265,9 +277,18 @@
             this.activeContactIndex = '';
         },
 
-        getStatus(){
-            this.contacts[this.responderIndex].userStatus = `Last seen at ${this.formatTime(this.now())}`;
-        }
+        // checks user input then adds to contacts
+        addContact(){
+            if(this.newContact.avatar == ''){
+                this.newContact.avatar = 'https://static.vecteezy.com/system/resources/previews/024/983/914/original/simple-user-default-icon-free-png.png'
+            }
+            if(this.newContact.name.trim() != ''){
+                this.contacts.push({...this.newContact});
+            }
+
+            this.newContact.name = '';
+            this.newContact.avatar = '';
+        },
     },
 
     mounted() {        

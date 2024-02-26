@@ -34,7 +34,35 @@
                     
                     <div class="head-buttons">
                         <button><i class="fa-solid fa-circle-notch"></i></button>
-                        <button><i class="fa-solid fa-message"></i></button>
+
+                        <!-- button opens modal to add a new contact -->
+                        <button  type="button" data-bs-toggle="modal" data-bs-target="#new-contact">
+                            <i class="fa-solid fa-message"></i>
+                        </button>
+                        <div class="modal fade" id="new-contact" tabindex="-1" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h1 class="modal-title fs-5" id="exampleModalLabel">Add a new contact</h1>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="input-group mb-3">
+                                            <span class="input-group-text">Name</span>
+                                            <input v-model="newContact.name" type="text" class="form-control" placeholder="contact name" aria-label="contact-name" name="contact-name">
+                                        </div>
+                                        <div class="input-group mb-3">
+                                            <span class="input-group-text">Profile Pic</span>
+                                            <input v-model="newContact.avatar" type="text" class="form-control" placeholder="image url" aria-label="profile picture">
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                        <button @click="addContact()" type="button" class="btn btn-primary">Save changes</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                         <button><i class="fa-solid fa-ellipsis-vertical"></i></button>
                     </div>
                 </header>
