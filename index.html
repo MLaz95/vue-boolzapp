@@ -141,7 +141,10 @@
                         v-model="newMessage.message"
                         @keyup.enter="sendMessage()"
                     >
-                    <button><i class="fa-solid fa-microphone"></i></button>
+                    <button>
+                        <i v-if="newMessage.message.trim() != ''" @click="sendMessage()" class="fa-solid fa-paper-plane"></i>
+                        <i v-else  class="fa-solid fa-microphone"></i>
+                    </button>
                 </footer>           
 
             </main>
