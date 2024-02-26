@@ -9,6 +9,7 @@
                 name: 'Michele',
                 avatar: './img/avatar_1.jpg',
                 visible: false,
+                userStatus: '',
                 messages: [
                     {
                         date: '10/01/2020 15:30:55',
@@ -31,6 +32,7 @@
                 name: 'Fabio',
                 avatar: './img/avatar_2.jpg',
                 visible: false,
+                userStatus: '',
                 messages: [
                     {
                         date: '20/03/2020 16:30:00',
@@ -53,6 +55,7 @@
                 name: 'Samuele',
                 avatar: './img/avatar_3.jpg',
                 visible: false,
+                userStatus: '',
                 messages: [
                     {
                         date: '28/03/2020 10:10:40',
@@ -75,6 +78,7 @@
                 name: 'Alessandro B.',
                 avatar: './img/avatar_4.jpg',
                 visible: false,
+                userStatus: '',
                 messages: [
                     {
                         date: '10/01/2020 15:30:55',
@@ -92,6 +96,7 @@
                 name: 'Alessandro L.',
                 avatar: './img/avatar_5.jpg',
                 visible: false,
+                userStatus: '',
                 messages: [
                     {
                         date: '10/01/2020 15:30:55',
@@ -109,6 +114,7 @@
                 name: 'Claudia',
                 avatar: './img/avatar_6.jpg',
                 visible: false,
+                userStatus: '',
                 messages: [
                     {
                         date: '10/01/2020 15:30:55',
@@ -131,6 +137,7 @@
                 name: 'Federico',
                 avatar: './img/avatar_7.jpg',
                 visible: false,
+                userStatus: '',
                 messages: [
                     {
                         date: '10/01/2020 15:30:55',
@@ -148,6 +155,7 @@
                 name: 'Davide',
                 avatar: './img/avatar_8.jpg',
                 visible: false,
+                userStatus: 'test',
                 messages: [
                     {
                         date: '10/01/2020 15:30:55',
@@ -169,8 +177,9 @@
         ],
 
         activeContact:{},
-        activeContactIndex:'',
+        activeContactIndex:'0',
         responderContact:{},
+        responderIndex:'',
         newMessage:{
             date: '',
             message: '',
@@ -185,6 +194,7 @@
 
         search: '',
         activeMenu: null,
+        // userStatus: '',
 
         
       }
@@ -192,34 +202,39 @@
 
     methods: {
         
-        getMessages(index){
-            // this.activeMenu = null
+        // sets the active chat and makes sure the user status is up to date
+        showChat(index){
             this.activeContact.visible = false;
             this.activeContactIndex = index;
             this.activeContact = this.contacts[index];
             this.activeContact.visible = true;
+            this.activeContact.userStatus = `Last seen at ${this.formatTime(this.activeContact.messages[this.activeContact.messages.length - 1].date)}`
         },
 
+        // only sends a messages if the text has content and then calls the function to get a reply
         sendMessage(){
             this.newMessage.date = this.now();
             if(this.newMessage.message.trim() != ''){
                 this.activeContact.messages.push({...this.newMessage});
 
-                this.delayResponse();
+                // the contact that is responding is immediately saved as an independent variable
+                // this way the reply is not dependent on the active contact 
+                this.responderContact = {...this.activeContact};
+                this.responderIndex = this.activeContactIndex;
+                // sets the contact status as writing
+                this.contacts[this.responderIndex].userStatus = `${this.responderContact.name} is writing...`;
+                // calls on the function to get a reply with a 1s delay
+                setTimeout(this.getResponse, 1000);
             }
             this.newMessage.message = '';
         },
 
-        // the contact that is responding is immediately saved as an independent variable
-        // this way the reply is not dependent on the active contact 
-        delayResponse(){
-            this.responderContact = {...this.activeContact};
-            setTimeout(this.getResponse, 1000)
-        },
-
+        // sends reply message, sets the user status to online for 1s before resetting back to the time of the last message
         getResponse(){
             this.newResponse.date = this.now();
             this.responderContact.messages.push({...this.newResponse})
+            this.contacts[this.responderIndex].userStatus = 'online'
+            setTimeout(this.getStatus, 1000)
         },
 
         filterContacts(){
@@ -238,12 +253,16 @@
         deleteMessage(index){
             this.activeContact.messages.splice(index, 1);
             console.log(this.activeContact)
+        },
+
+        getStatus(){
+            this.contacts[this.responderIndex].userStatus = `Last seen at ${this.formatTime(this.now())}`
         }
 
     },
 
     mounted() {
-        this.getMessages(0);
+        this.showChat(0);
         
         console.log(this.activeContact)
     }

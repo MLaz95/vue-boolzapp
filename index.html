@@ -63,7 +63,7 @@
                 <div id="contacts">
                     <div
                         v-for="(contact, index) in filterContacts()"
-                        @click="getMessages(index)"
+                        @click="showChat(index)"
                         :class="{active: contact.visible}"
                         class="contact-card">
                         <div class="img-wrapper">
@@ -95,7 +95,7 @@
                                 <strong>{{activeContact.name}}</strong>
                             </div>
                             <div>
-                                <small>Last access</small>
+                                <small>{{activeContact.userStatus}}</small>
                             </div>
                         </div>
                         
