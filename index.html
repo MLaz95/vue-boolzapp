@@ -76,7 +76,6 @@
 
                             <!-- v-if makes sure the app doesn't break if all messages are deleted from a chat -->
                             <small v-if="contact.messages.length > 0">{{formatTime(contact.messages[contact.messages.length - 1].date)}}</small>
-                            
                             <p v-if="contact.messages.length > 0">{{contact.messages[contact.messages.length - 1].message}}</p>
                         </div>
                     </div>
@@ -112,7 +111,13 @@
                         <div class="head-buttons">
                             <button><i class="fa-solid fa-magnifying-glass"></i></button>
                             <button><i class="fa-solid fa-paperclip"></i></button>
-                            <button><i class="fa-solid fa-ellipsis-vertical"></i></button>
+                            <button type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="fa-solid fa-ellipsis-vertical"></i>
+                            </button>
+                            <ul class="dropdown-menu dropdown-menu-end chat-drop">
+                                <li class="dropdown-item" @click="deleteAllMessages">Delete All Messages</li>
+                                <li class="dropdown-item" @click="deleteContact">Delete Contact</li>
+                            </ul>
                         </div>
                     </header>
 

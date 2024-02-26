@@ -244,22 +244,33 @@
         },
 
         formatTime(date){
-            const dt = DateTime.fromFormat(date, 'dd/LL/yyyy HH:mm:ss')
-            return dt.toLocaleString(DateTime.TIME_24_SIMPLE)
+            const dt = DateTime.fromFormat(date, 'dd/LL/yyyy HH:mm:ss');
+            return dt.toLocaleString(DateTime.TIME_24_SIMPLE);
         },
 
         deleteMessage(index){
             this.activeContact.messages.splice(index, 1);
-            console.log(this.activeContact)
+            console.log(this.activeContact);
+        },
+
+        // deletes all messages with a contact
+        deleteAllMessages(){
+            this.activeContact.messages.splice(0, this.activeContact.messages.length);
+        },
+
+        // deletes entire contact
+        deleteContact(){
+            this.contacts.splice(this.activeContactIndex, 1);
+            this.activeContact = {};
+            this.activeContactIndex = '';
         },
 
         getStatus(){
-            this.contacts[this.responderIndex].userStatus = `Last seen at ${this.formatTime(this.now())}`
+            this.contacts[this.responderIndex].userStatus = `Last seen at ${this.formatTime(this.now())}`;
         }
-
     },
 
     mounted() {        
-        console.log(this.activeContact)
+        console.log(this.activeContact);
     }
   }).mount('#app')
