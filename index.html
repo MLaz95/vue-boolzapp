@@ -84,69 +84,73 @@
             </aside>
 
             <!-- main view with texts -->
+            
             <main>
-                <header>
-                    <div class="head-profile">
-                        <div class="img-wrapper-small">
-                            <img :src="activeContact.avatar" alt="">
-                        </div>
-                        <div>
-                            <div>
-                                <strong>{{activeContact.name}}</strong>
-                            </div>
-                            <div>
-                                <small>{{activeContact.userStatus}}</small>
-                            </div>
-                        </div>
-                        
-                    </div>
-                    
-                    <div class="head-buttons">
-                        <button><i class="fa-solid fa-magnifying-glass"></i></button>
-                        <button><i class="fa-solid fa-paperclip"></i></button>
-                        <button><i class="fa-solid fa-ellipsis-vertical"></i></button>
-                    </div>
-                </header>
-
-                <div id="chat-container">
-                    <!-- chat -->
-                    <div
-                        v-for="(text, index) in activeContact.messages"
-                        class="chat-row"
-                        :class="text.status"
-                    >
-                        <div class="chat-text">
-                            <p class="m-0">{{text.message}}</p>
-                            <span class="chat-time">{{formatTime(text.date)}}</span>
-                            <!-- <i @click="showMenu(index)" class="fa-solid fa-chevron-down dropdown-toggle"></i>
-                            <ul class="chat-drop dropdown-menu" v-show="activeMenu == index">
-                                <li class="dropdown-item" @click="deleteMessage(index)">Delete Message</li>
-                            </ul> -->
-                            <button class="btn p-1" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                <i class="fa-solid fa-chevron-down"></i>
-                            </button>
-                            <ul class="dropdown-menu chat-drop">
-                                <li class="dropdown-item" @click="deleteMessage(index)">Delete Message</li>
-                            </ul>
-                        </div>
-                    </div>
+                <div v-if="activeContact.name == null" class="welcome-screen">
+                    <div class="welcome-content">
+                        <h1>Welcome to Boolzapp Web</h1>
+                        <p>Select a contact in your sidebar to start chatting</p>
+                        <i class="fa-solid fa-left-long fs-1"></i>
+                    </div> 
                 </div>
 
-                <footer>
-                    <!-- input area -->
-                    <button><i class="fa-regular fa-face-smile"></i></button>
-                    <input
-                        type="text"
-                        placeholder="Type a message"
-                        v-model="newMessage.message"
-                        @keyup.enter="sendMessage()"
-                    >
-                    <button>
-                        <i v-if="newMessage.message.trim() != ''" @click="sendMessage()" class="fa-solid fa-paper-plane"></i>
-                        <i v-else  class="fa-solid fa-microphone"></i>
-                    </button>
-                </footer>           
+                <div v-else class="main-screen-wrapper">
+                    <header>
+                        <div class="head-profile">
+                            <div class="img-wrapper-small">
+                                <img :src="activeContact.avatar" alt="">
+                            </div>
+                            <div>
+                                <div>
+                                    <strong>{{activeContact.name}}</strong>
+                                </div>
+                                <div>
+                                    <small>{{activeContact.userStatus}}</small>
+                                </div>
+                            </div>                        
+                        </div>
+                        <div class="head-buttons">
+                            <button><i class="fa-solid fa-magnifying-glass"></i></button>
+                            <button><i class="fa-solid fa-paperclip"></i></button>
+                            <button><i class="fa-solid fa-ellipsis-vertical"></i></button>
+                        </div>
+                    </header>
 
+                    <div id="chat-container">
+                        <!-- chat -->
+                        <div
+                            v-for="(text, index) in activeContact.messages"
+                            class="chat-row"
+                            :class="text.status"
+                        >
+                            <div class="chat-text">
+                                <p class="m-0">{{text.message}}</p>
+                                <span class="chat-time">{{formatTime(text.date)}}</span>
+                                <button class="btn p-1" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="fa-solid fa-chevron-down"></i>
+                                </button>
+                                <ul class="dropdown-menu chat-drop">
+                                    <li class="dropdown-item" @click="deleteMessage(index)">Delete Message</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <footer>
+                        <!-- input area -->
+                        <button><i class="fa-regular fa-face-smile"></i></button>
+                        <input
+                            type="text"
+                            placeholder="Type a message"
+                            v-model="newMessage.message"
+                            @keyup.enter="sendMessage()"
+                        >
+                        <button>
+                            <i v-if="newMessage.message.trim() != ''" @click="sendMessage()" class="fa-solid fa-paper-plane"></i>
+                            <i v-else  class="fa-solid fa-microphone"></i>
+                        </button>
+                    </footer>
+                </div>
             </main>
         </div>
     </div>

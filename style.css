@@ -24,7 +24,7 @@ body{
     background-color: #009688;
 
     position: absolute;
-    top: 0px;
+    top: -25px;
     left: 0;
     z-index: -1;
 }
@@ -42,22 +42,14 @@ input:focus-visible{
 
 /* general container layout */
 .my_container{
-    /* background-color: pink;
-    border: 1px dashed red; */
-    /* test */
-
     max-width: 1600px;
     height: calc(100vh - 40px);
-    margin: 0 auto;
-    padding-top: 25px;
+    margin: 25px auto 0;
 
     display: flex;
-}
 
-/* .my_container *{
-    border: 1px dashed red;
-    test
-} */
+    box-shadow: 10px 10px 20px;
+}
 
 .my_container aside{
     flex: 0 0 30%;
@@ -112,6 +104,7 @@ header{
 
 .head-buttons button{
     color: #B1B1B1;
+    background-color: transparent;
 }
 
 /* sidebar */
@@ -236,8 +229,30 @@ header{
 }
 
 /* chat screen */
+main > div{
+    height: 100%;
+}
 
-main{
+.welcome-screen{
+    background-image: url(./img/mine.jpg);
+    position: relative;
+}
+
+.welcome-content{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 2rem;
+}
+
+.welcome-content h1{
+    font-size: 5rem;
+}
+
+
+
+.main-screen-wrapper{
     display: flex;
     flex-direction: column;
 }

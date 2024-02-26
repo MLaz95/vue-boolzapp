@@ -155,7 +155,7 @@
                 name: 'Davide',
                 avatar: './img/avatar_8.jpg',
                 visible: false,
-                userStatus: 'test',
+                userStatus: '',
                 messages: [
                     {
                         date: '10/01/2020 15:30:55',
@@ -176,7 +176,7 @@
             }   
         ],
 
-        activeContact:{},
+        activeContact: {},
         activeContactIndex:'0',
         responderContact:{},
         responderIndex:'',
@@ -193,8 +193,6 @@
         },
 
         search: '',
-        activeMenu: null,
-        // userStatus: '',
 
         
       }
@@ -261,9 +259,7 @@
 
     },
 
-    mounted() {
-        this.showChat(0);
-        
+    mounted() {        
         console.log(this.activeContact)
     }
   }).mount('#app')
