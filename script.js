@@ -297,11 +297,15 @@
             this.newContact.avatar = '';
         },
 
+        hideSplashScreen(){
+            const splashScreen = document.querySelector('#splash-screen');
+            splashScreen.classList.add('vanish');
+
+        }
+
     },
 
     mounted(){
-        axios.get('https://meowfacts.herokuapp.com/').then((result) => {
-            console.log(result);
-        })
+        setTimeout(this.hideSplashScreen, 1000)
     }
   }).mount('#app')

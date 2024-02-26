@@ -19,6 +19,10 @@
 </head>
 <body>
     <div id="app">
+        <div id="splash-screen">
+            <h1 id="load-text">Welcome</h1>
+            <div id="load-circle"></div>
+        </div>
         <div class="back-top"></div>
         <div class="my_container">
             <!-- sidebar with contacts -->
@@ -53,7 +57,7 @@
                                         </div>
                                         <div class="input-group mb-3">
                                             <span class="input-group-text">Profile Pic</span>
-                                            <input v-model="newContact.avatar" type="text" class="form-control" placeholder="image url" aria-label="profile picture">
+                                            <input v-model="newContact.avatar" type="text" class="form-control" placeholder="image url" aria-label="profile picture" name="image-url">
                                         </div>
                                     </div>
                                     <div class="modal-footer">

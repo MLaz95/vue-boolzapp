@@ -366,3 +366,54 @@ footer input{
 
     font-size: 1em;
 }
+
+#splash-screen{
+    width: 100vw;
+    height: 100vh;
+    background-color: #009688;
+    opacity: 1;
+    transition: opacity 0.4s;
+    position: absolute;
+    top: -25px;
+    left: 0;
+    z-index: 10;
+}
+
+#splash-screen.vanish{
+    opacity: 0;
+    pointer-events: none;
+}
+
+#load-text{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 4rem;
+    color: white;
+}
+
+#load-circle{
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    border: 5px solid transparent;
+    border-top-color: white;
+    border-bottom-color: white;
+
+    position: relative;
+    top: calc(50% - 150px);
+    left: calc(50% - 150px);
+
+    animation: loader 1s linear infinite;
+}
+
+@keyframes loader {
+    0%{
+        transform: rotate(0deg);
+    }
+
+    100%{
+        transform: rotate(360deg);
+    }
+}
