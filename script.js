@@ -212,7 +212,7 @@
         showChat(index){
             this.activeContact.visible = false;
             this.activeContactIndex = index;
-            this.activeContact = this.contacts[index];
+            this.activeContact = this.filterContacts()[index];
             this.activeContact.visible = true;
             this.activeContact.userStatus = `Last seen at ${this.formatTime(this.activeContact.messages[this.activeContact.messages.length - 1].date)}`
             if(window.innerWidth <= 992){
@@ -318,5 +318,6 @@
 
     mounted(){
         setTimeout(this.hideSplashScreen, 1000)
+        console.log(this)
     }
   }).mount('#app')
